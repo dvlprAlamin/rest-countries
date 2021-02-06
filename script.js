@@ -28,6 +28,7 @@ fetch('https://restcountries.eu/rest/v2/all')
     // }
 })
 
+// show country details
 function detailsInfo(countryName) {
     fetch('https://restcountries.eu/rest/v2/name/' + countryName)
     .then(res => res.json())
@@ -39,7 +40,7 @@ function detailsInfo(countryName) {
         document.getElementById('native-name').innerText = data[0].nativeName;
         document.getElementById('alpha3Code').innerText = data[0].alpha3Code;
         document.getElementById('capital').innerText = data[0].capital;
-        document.getElementById('area').innerText = data[0].area;
+        document.getElementById('area').innerText = data[0].area + ' Square km';
         document.getElementById('currency').innerText = data[0].currencies[0].name + ' ( ' + data[0].currencies[0].symbol + ' )';
         document.getElementById('population').innerText = data[0].population;
         document.getElementById('region').innerText = data[0].region;
@@ -49,9 +50,10 @@ function detailsInfo(countryName) {
         document.getElementById('callingCodes').innerText = '+' + data[0].callingCodes[0];
         document.getElementById('topLevelDomain').innerText = data[0].topLevelDomain;
     })
-    
     document.getElementById('country-details').style.display = 'block';
-    // console.log(countryName);
 }
-// let countries = document.getElementById('countries');
-// fetch('https://restcountries.eu/rest/v2/name/aruba?fullText=true')
+// close button event handler
+document.getElementById('close-btn').addEventListener('click', () => {
+    console.log('ffffffffffff')
+    document.getElementById('country-details').style.display = 'none';
+});
