@@ -61,7 +61,8 @@ body{
     margin: 0 auto;
     width: 60%;
     height: 80vh;
-    background-color: cyan;
+    color: #333333;
+    background-color: #5fe6f8;
     display: none;
     padding: 2rem 3rem;
     overflow-y: auto;

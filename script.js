@@ -1,8 +1,11 @@
-
-
+// fetch all country data 
 fetch('https://restcountries.eu/rest/v2/all')
 .then(res => res.json())
-.then(data => {
+.then(data => countryInfo(data))
+
+
+// added country info in inner html
+function countryInfo(data) {
     data.forEach(country => {
         document.getElementById('countries').innerHTML += `
             <div class='country'>
@@ -13,22 +16,10 @@ fetch('https://restcountries.eu/rest/v2/all')
             </div>
             `
     });
-    // for (let i = 0; i < data.length; i++) {
-    //     const country = data[i];
-    //     let name = country.name;
-    //     let capital = country.capital;
-    //     let flag = country.flag;
-    //     let countries = document.getElementById('countries');
-    //     countries.innerHTML += `
-    //     <div class='country'>
-    //         <img src="${flag}">
-    //         <h1>Name: ${name}</h1>
-    //         <h3>Capital: ${capital}</h3>
-    //     `
-    // }
-})
+};
 
-// show country details
+
+// show country details and transfer country details into details table
 function detailsInfo(countryName) {
     fetch('https://restcountries.eu/rest/v2/name/' + countryName)
     .then(res => res.json())
@@ -51,7 +42,9 @@ function detailsInfo(countryName) {
         document.getElementById('topLevelDomain').innerText = data[0].topLevelDomain;
     })
     document.getElementById('country-details').style.display = 'block';
-}
+};
+
+
 // close button event handler
 document.getElementById('close-btn').addEventListener('click', () => {
     console.log('ffffffffffff')
