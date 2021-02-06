@@ -25,7 +25,20 @@ body{
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+}
+.country button{
+    cursor: pointer;
+    background-color: #00587a;
+    border: 0;
+    outline: 0;
+    color: #ffffff;
+    padding: .6rem; 
+    text-transform: uppercase;
+}
+.country button:hover{
+    background-color: #008891;
+    transition: .5s;
 }
 .country img{
     max-width: 100%;
@@ -36,4 +49,34 @@ body{
 }
 .country h3{
     color: #008891;
+}
+#detail-info, td{
+    border: 1px solid #008891;
+    border-collapse: collapse;
+}
+#country-details{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 5%;
+    margin: 0 auto;
+    width: 60%;
+    height: 80vh;
+    background-color: cyan;
+    display: none;
+    padding: 2rem;
+     overflow-y: auto;
+}
+#detail-info{
+    width: 100%;
+}
+#detail-info tbody td{
+    padding-left: 2rem;
+}
+#flag{
+    text-align: center;
+}
+#flag img{
+    height: 15rem;
+    text-align: center;
 }

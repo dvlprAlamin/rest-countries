@@ -9,6 +9,7 @@ fetch('https://restcountries.eu/rest/v2/all')
                 <img src="${country.flag}">
                 <h1>Name: ${country.name}</h1>
                 <h3>Capital: ${country.capital}</h3>
+                <button onclick="detailsInfo('${country.name}')">Details</button>
             </div>
             `
     });
@@ -27,6 +28,30 @@ fetch('https://restcountries.eu/rest/v2/all')
     // }
 })
 
-
-let countries = document.getElementById('countries');
+function detailsInfo(countryName) {
+    fetch('https://restcountries.eu/rest/v2/name/' + countryName)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('flag').innerHTML = `
+        <img src='${data[0].flag}'>
+        `
+        document.getElementById('name').innerText = countryName;
+        document.getElementById('native-name').innerText = data[0].nativeName;
+        document.getElementById('alpha3Code').innerText = data[0].alpha3Code;
+        document.getElementById('capital').innerText = data[0].capital;
+        document.getElementById('area').innerText = data[0].area;
+        document.getElementById('currency').innerText = data[0].currencies[0].name + ' ( ' + data[0].currencies[0].symbol + ' )';
+        document.getElementById('population').innerText = data[0].population;
+        document.getElementById('region').innerText = data[0].region;
+        document.getElementById('sub-region').innerText = data[0].subregion;
+        document.getElementById('numericCode').innerText = data[0].numericCode;
+        document.getElementById('timezone').innerText = data[0].timezones;
+        document.getElementById('callingCodes').innerText = '+' + data[0].callingCodes[0];
+        document.getElementById('topLevelDomain').innerText = data[0].topLevelDomain;
+    })
+    
+    document.getElementById('country-details').style.display = 'block';
+    // console.log(countryName);
+}
+// let countries = document.getElementById('countries');
 // fetch('https://restcountries.eu/rest/v2/name/aruba?fullText=true')
